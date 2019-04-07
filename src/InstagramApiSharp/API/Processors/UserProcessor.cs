@@ -909,7 +909,7 @@ namespace InstagramApiSharp.API.Processors
             UserAuthValidator.Validate(_userAuthValidate);
             var user = await GetUserAsync(username);
             if (!user.Succeeded)
-                return Result.Fail<InstaMediaList>("Unable to get user to load media");
+                return Result.Fail(new ResultInfo(user.Info.ResponseType, $"Unable to get user to load media. {user.Info.Message}"), default(InstaMediaList));
             return await GetUserMediaByIdAsync(user.Value.Pk, paginationParameters);
         }
 
