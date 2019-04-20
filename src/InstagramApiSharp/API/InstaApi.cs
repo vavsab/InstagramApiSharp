@@ -973,7 +973,7 @@ namespace InstagramApiSharp.API
                         return Result.Fail("Two Factor Authentication is required", InstaLoginResult.TwoFactorRequired);
                     }
                     if (loginFailReason.ErrorType == "checkpoint_challenge_required"
-                       /* || !string.IsNullOrEmpty(loginFailReason.Message) && loginFailReason.Message == "challenge_required"*/)
+                       || !string.IsNullOrEmpty(loginFailReason.Message) && loginFailReason.Message == "challenge_required")
                     {
                         _challengeinfo = loginFailReason.Challenge;
 
